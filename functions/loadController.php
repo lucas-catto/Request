@@ -2,10 +2,8 @@
 
 function loadController($controllerMethod) {
 
-    $controllerMethod = explode('@', $controllerMethod);
-
-    $controllerClass = $controllerMethod[0];
-    $method = $controllerMethod[1];
+    $controllerClass = $controllerMethod['controller'];
+    $method = $controllerMethod['method'];
 
     $controllerPath = "Controllers/{$controllerClass}.php";
 
