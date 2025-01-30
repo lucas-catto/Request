@@ -27,7 +27,7 @@ $routes = [
 ];
 
 if (array_key_exists($uri, $routes)) {
-    loadController($routes[$uri]);
+    loadController($routes[$uri]['controller'], $routes[$uri]['method']);
 } else {
     $error = "404";
     view('error.php', compact('error'));

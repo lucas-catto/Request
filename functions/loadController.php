@@ -1,21 +1,20 @@
 <?php
 
-function loadController($controllerMethod) {
+function loadController($controller, $method) {
 
-    $controllerClass = $controllerMethod['controller'];
-    $method = $controllerMethod['method'];
-
-    $controllerPath = "Controllers/{$controllerClass}.php";
+    $controllerPath = "Controllers/{$controller}.php";
 
     if (file_exists($controllerPath)) {
 
         require_once($controllerPath);
 
-        if (class_exists($controllerClass)) {
+        if (class_exists($controller)) {
 
-            $controller = new $controllerClass();
+            $controller = new $controller();
 
             if (method_exists($controller, $method)) {
+
+                // $class = new ReflectionClass($controller);                
                 
                 $controller->$method(new Request);
             } else {
